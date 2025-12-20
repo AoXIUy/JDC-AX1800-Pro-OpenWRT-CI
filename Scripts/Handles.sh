@@ -30,7 +30,6 @@ if [ -d *"luci-theme-argon"* ]; then
 
 	cd ./luci-theme-argon/
 
-	sed -i "/font-weight:/ { /important/! { /\/\*/! s/:.*/: var(--font-weight);/ } }" $(find ./luci-theme-argon -type f -iname "*.css")
 	sed -i "s/primary '.*'/primary '#31a1a1'/; s/'0.2'/'0.5'/; s/'none'/'bing'/; s/'600'/'normal'/" ./luci-app-argon-config/root/etc/config/argon
 
 	cd $PKG_PATH && echo "theme-argon has been fixed!"
@@ -74,4 +73,26 @@ if [ -f "$RUST_FILE" ]; then
 	sed -i 's/ci-llvm=true/ci-llvm=false/g' $RUST_FILE
 
 	cd $PKG_PATH && echo "rust has been fixed!"
+fi
+
+#修复DiskMan编译失败
+DM_FILE="./luci-app-diskman/applications/luci-app-diskman/Makefile"
+if [ -f "$DM_FILE" ]; then
+	echo " "
+
+	sed -i 's/fs-ntfs/fs-ntfs3/g' $DM_FILE
+	sed -i '/ntfs-3g-utils /d' $DM_FILE
+
+	cd $PKG_PATH && echo "diskman has been fixed!"
+fi
+
+#修复99_netspeedtest文件残留问题
+if [ -d *"luci-app-netspeedtest"* ]; then
+	echo " "
+
+	cd ./luci-app-netspeedtest/
+
+	sed -i '$a\exit 0' ./netspeedtest/files/99_netspeedtest.defaults
+
+	cd $PKG_PATH && echo "netspeedtest has been fixed!"
 fi
