@@ -23,6 +23,7 @@ CONFIG_PACKAGE_frr=y
 CONFIG_PACKAGE_luci-app-msd_lite=y
 CONFIG_PACKAGE_luci-app-netdata=y
 CONFIG_PACKAGE_luci-app-appfilter=y
+CONFIG_PACKAGE_luci-theme-aurora=y
 
 
 #增加插件
