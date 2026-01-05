@@ -51,6 +51,18 @@ UPDATE_PACKAGE "aurora-config" "eamonxg/luci-app-aurora-config" "master"
 UPDATE_PACKAGE "kucat" "sirpdboy/luci-theme-kucat" "master"
 UPDATE_PACKAGE "kucat-config" "sirpdboy/luci-app-kucat-config" "master"
 
+UPDATE_PACKAGE "luci-app-fwx-appfilter"        "fanchmwrt/fanchmwrt-packages" "main" "pkg"
+UPDATE_PACKAGE "luci-app-fwx-dashboard-setting" "fanchmwrt/fanchmwrt-packages" "main" "pkg"
+UPDATE_PACKAGE "luci-app-fwx-dashboard"        "fanchmwrt/fanchmwrt-packages" "main" "pkg"
+UPDATE_PACKAGE "luci-app-fwx-feature"          "fanchmwrt/fanchmwrt-packages" "main" "pkg"
+UPDATE_PACKAGE "luci-app-fwx-macfilter"        "fanchmwrt/fanchmwrt-packages" "main" "pkg"
+UPDATE_PACKAGE "luci-app-fwx-network"          "fanchmwrt/fanchmwrt-packages" "main" "pkg"
+UPDATE_PACKAGE "luci-app-fwx-record"           "fanchmwrt/fanchmwrt-packages" "main" "pkg"
+UPDATE_PACKAGE "luci-app-fwx-resources"        "fanchmwrt/fanchmwrt-packages" "main" "pkg"
+UPDATE_PACKAGE "luci-app-fwx-system"           "fanchmwrt/fanchmwrt-packages" "main" "pkg"
+UPDATE_PACKAGE "luci-app-fwx-user"              "fanchmwrt/fanchmwrt-packages" "main" "pkg"
+
+
 UPDATE_PACKAGE "homeproxy" "VIKINGYFY/homeproxy" "main"
 UPDATE_PACKAGE "momo" "nikkinikki-org/OpenWrt-momo" "main"
 UPDATE_PACKAGE "nikki" "nikkinikki-org/OpenWrt-nikki" "main"
