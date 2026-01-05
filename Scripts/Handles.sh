@@ -96,3 +96,13 @@ if [ -d *"luci-app-netspeedtest"* ]; then
     sed -i 's/ca-certificates/ca-bundle/g' ./speedtest-cli/Makefile
 	cd $PKG_PATH && echo "netspeedtest has been fixed!"
 fi
+
+# CI 模式：删除旧 luci-app-pbr apk，避免 apk 冲突
+if [ -d "$GITHUB_WORKSPACE/wrt/bin/packages" ]; then
+	echo " "
+
+	find $GITHUB_WORKSPACE/wrt/bin -type f -name "luci-app-pbr-*.apk" -print -delete
+
+	echo "old luci-app-pbr apk has been removed!"
+fi
+
