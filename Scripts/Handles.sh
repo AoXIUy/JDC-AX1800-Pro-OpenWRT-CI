@@ -2,6 +2,17 @@
 
 PKG_PATH="$GITHUB_WORKSPACE/wrt/package/"
 
+R8152_MK=$(find "$GITHUB_WORKSPACE/wrt/package/" -path "*/kernel/r8152/Makefile")
+
+if [ -f "$R8152_MK" ]; then
+	echo "Fixing r8152 version to 2.20.1"
+
+	sed -i 's/^PKG_VERSION:=.*/PKG_VERSION:=2.20.1/' $R8152_MK
+	sed -i 's/^PKG_HASH:=.*/PKG_HASH:=f092ebf88850b9bf61065889623d0670fa5a0bf1bdcd80e26949560cbf51c94d/' $R8152_MK
+
+	echo "r8152 has been fixed to 2.20.1"
+fi
+
 #预置HomeProxy数据
 if [ -d *"homeproxy"* ]; then
 	echo " "
