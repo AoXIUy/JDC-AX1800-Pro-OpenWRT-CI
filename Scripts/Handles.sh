@@ -1,17 +1,19 @@
 #!/bin/bash
 
 PKG_PATH="$GITHUB_WORKSPACE/wrt/package/"
-
+# 修复 r8152 下载源，改为自建 URL（2.21.4）
 R8152_MK=$(find "$GITHUB_WORKSPACE/wrt/package/" -path "*/kernel/r8152/Makefile")
 
 if [ -f "$R8152_MK" ]; then
-	echo "Fixing r8152 version to 2.20.1"
+	echo "Redirect r8152 source to custom mirror"
 
-	sed -i 's/^PKG_VERSION:=.*/PKG_VERSION:=2.20.1/' $R8152_MK
-	sed -i 's/^PKG_HASH:=.*/PKG_HASH:=f092ebf88850b9bf61065889623d0670fa5a0bf1bdcd80e26949560cbf51c94d/' $R8152_MK
+	sed -i 's/^PKG_VERSION:=.*/PKG_VERSION:=2.21.4/' $R8152_MK
+	sed -i 's|^PKG_SOURCE_URL:=.*|PKG_SOURCE_URL:=https://abbaes.6988520.xyz|' $R8152_MK
+	sed -i 's/^PKG_HASH:=.*/PKG_HASH:=0e94a553d1dda29fd5a2aa22c8d4bb51fd0a2c087b7f2d81e3d7fce0ce0f1687/' $R8152_MK
 
-	echo "r8152 has been fixed to 2.20.1"
+	echo "r8152 source has been redirected"
 fi
+
 
 #预置HomeProxy数据
 if [ -d *"homeproxy"* ]; then
